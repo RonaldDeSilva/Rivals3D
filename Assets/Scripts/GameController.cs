@@ -5,8 +5,8 @@ public class GameController : MonoBehaviour
     private GameObject Deck;
     private GameObject Discard;
     public int HandSize;
-    private bool EmptyHand = true;
-    private bool Refresh = false;
+    public bool EmptyHand = true;
+    public bool Refresh = false;
     private GameObject Position1;
     private GameObject Position2;
     private GameObject Position3;
@@ -35,8 +35,8 @@ public class GameController : MonoBehaviour
         }
         else if (EmptyHand && !Refresh)
         {
-            DrawCardsToHand();
             Refresh = true;
+            DrawCardsToHand();
         }
 
     }

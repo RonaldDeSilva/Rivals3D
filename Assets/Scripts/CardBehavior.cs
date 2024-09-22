@@ -5,6 +5,7 @@ public class CardBehavior : MonoBehaviour
     private bool FollowMouse = false;
     private GameObject Discard;
     private Rigidbody rb;
+    public bool OverHand = true;
 
     void Start()
     {
@@ -28,7 +29,7 @@ public class CardBehavior : MonoBehaviour
             if (FollowMouse)
             {
                 FollowMouse = false;
-                if (transform.localPosition.y >= 1)
+                if (!OverHand)
                 {
                     //------------Do Card stuff here
                     //--
@@ -50,6 +51,22 @@ public class CardBehavior : MonoBehaviour
             {
                 FollowMouse = true;
             }
+        }
+    }
+
+    private void OnTriggerExit(Collider collision)
+    {
+        if (collision.gameObject.CompareTag("Hand"))
+        {
+            OverHand = false;
+        }
+    }
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.gameObject.CompareTag("Hand"))
+        {
+            OverHand = true;
         }
     }
 }
